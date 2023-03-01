@@ -47,14 +47,14 @@ app.post('/interactions', async function (req, res) {
 
     // "test" guild command
     if (name === 'test') {
-      // Send a message into the channel where command was triggered from
-      return res.send({
+        // Send a message into the channel where command was triggered from
+        return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
-          // Fetches a random emoji to send from a helper function
-          content: 'hello world ' + getRandomEmoji(),
+            // Fetches a random emoji to send from a helper function
+            content: 'hello world ' + getRandomEmoji(),
         },
-      });
+        });
     }
   }
 });
