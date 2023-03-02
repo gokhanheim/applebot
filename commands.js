@@ -61,7 +61,7 @@ function createCommandChoices() {
 // Simple test command
 export const TEST_COMMAND = {
   name: 'test',
-  description: 'Basic guild command',
+  description: 'Merhaba Dünya',
   type: 1,
 };
 
