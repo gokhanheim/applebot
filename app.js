@@ -8,11 +8,7 @@ import {
 } from 'discord-interactions';
 import { VerifyDiscordRequest, getRandomEmoji, DiscordRequest } from './utils.js';
 import { getShuffledOptions, getResult } from './game.js';
-import {
-  CHALLENGE_COMMAND,
-  TEST_COMMAND,
-  HasGuildCommands,
-} from './commands.js';
+import { registerGuildCommands } from './register';
 
 // Create an express app
 const app = express();
@@ -54,7 +50,7 @@ app.post('/interactions', async function (req, res) {
         },
       });
     }
-    
+
     // "challenge" guild command
     if (name === 'challenge' && id) {
       const userId = req.body.member.user.id;
@@ -177,8 +173,5 @@ app.listen(3000, () => {
   console.log('Listening on port 3000');
 
   // Check if guild commands from commands.json are installed (if not, install them)
-  HasGuildCommands(process.env.APP_ID, process.env.GUILD_ID, [
-    TEST_COMMAND,
-    CHALLENGE_COMMAND,
-  ]);
+  registerGuildCommands();
 });
